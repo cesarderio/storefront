@@ -1,12 +1,4 @@
-const initialState = {
-  categories: [
-    { name: "Food", description: {} },
-    { name: "Electronics", description: {} },
-    { name: "Games", description: {} },
-    { name: "Weapons", description: {} },
-  ],
-  itemsInCart: 0,
-};
+
 
 function cartReducer(state = initialState, action) {
   const { type, payload } = action;
