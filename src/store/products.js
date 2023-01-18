@@ -14,7 +14,7 @@ function productsReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case "TV":
+    case "":
       return {
         ...state,
         products: state.products.map((product) => {
@@ -27,84 +27,6 @@ function productsReducer(state = initialState, action) {
           return product;
         }),
       };
-    case "Radio":
-      return {
-        ...state,
-        products: state.products.map((product) => {
-          if (product.name === payload.name) {
-            return {
-              name: product.name,
-              products: product.products,
-            };
-          }
-          return product;
-        }),
-      };
-      case "Shirt":
-        return {
-          ...state,
-          products: state.products.map((product) => {
-            if (product.name === payload.name) {
-              return {
-                name: product.name,
-                products: product.products,
-              };
-            }
-            return product;
-          }),
-        };
-        case "Socks":
-          return {
-            ...state,
-            products: state.products.map((product) => {
-              if (product.name === payload.name) {
-                return {
-                  name: product.name,
-                  products: product.products,
-                };
-              }
-              return product;
-            }),
-          };
-          case "Apples":
-            return {
-              ...state,
-              products: state.products.map((product) => {
-                if (product.name === payload.name) {
-                  return {
-                    name: product.name,
-                    products: product.products,
-                  };
-                }
-                return product;
-              }),
-            };
-            case "Eggs":
-              return {
-                ...state,
-                products: state.products.map((product) => {
-                  if (product.name === payload.name) {
-                    return {
-                      name: product.name,
-                      products: product.products,
-                    };
-                  }
-                  return product;
-                }),
-              };
-              case "Bread":
-                return {
-                  ...state,
-                  products: state.products.map((product) => {
-                    if (product.name === payload.name) {
-                      return {
-                        name: product.name,
-                        products: product.products,
-                      };
-                    }
-                    return product;
-                  }),
-                };
     default:
       return state;
   }
