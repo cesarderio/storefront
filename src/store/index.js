@@ -4,6 +4,7 @@ import cartReducer from "./cart";
 import categoriesReducer from "./categories";
 import activeCategoryReducer from "./active-category";
 import productsReducer from "./products";
+import { selectCategory, reset } from "./active-category";
 
 let reducers = combineReducers({
   activeCategory: activeCategoryReducer,

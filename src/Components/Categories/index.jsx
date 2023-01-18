@@ -1,50 +1,42 @@
-import { Link } from "@mui/material";
+import { ButtonGroup, Link, Button } from "@mui/material";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import store from "../../store";
-import { incrementCount, decrementCount } from "../../store/cart";
+import { selectCategory } from "../../store/active-category";
+
+// import store from "../../store";
+// import { incrementCount, decrementCount } from "../../store/cart";
 
 const Categories = (props) => {
+  // const { incrementCount, decrementCount, products } = props;
 
-  const {
-    incrementCount,
-    decrementCount,
-    products,
-  } = props;
+  const { categories, selectCategory } = props;
 
   return (
     <>
       <h2>Browse our Categories</h2>
-      {/* <BrowserRouter>
-      <Routes>
-        <Route path="/food" element={<Food />}/>
-        <Route path="/electronics" element={<Electronics />}/>
-        <Route path="/games" element={<Games />} />
-        <Route path="/weapons" element={<Weapons />} />
-      </Routes>
-    
-    </BrowserRouter> */}
-      {/* <Link to='/' default>Home</Link> */}
-      <Link to="/food">Food</Link>
-      <Link to="/electronics">Electronics</Link>
-      <Link to="/games">Games</Link>
-      <Link to="/weapons">Weapons</Link>
+      <ButtonGroup variant="text" aria-label="text button group">
+        {categories.map((category, index) => (
+          <Button key={`categories-index`} onClick={() => selectCategory(category.name)}>{category.displayName}</Button>
+        ))}
+      </ButtonGroup>
     </>
   );
 };
 
-const mapStateToPotato = (store) => {
+const mapStateToPotato = ({ products }) => {
   return {
-    activeCategory: store.activeCategory,
-    category: store.category,
-    products: store.products,
-    cart: store.cart,
+    categories: products.categories,
+    // activeCategory: store.activeCategory,
+    // category: store.category,
+    // products: store.products,
+    // cart: store.cart,
   };
 };
 
 const mapDispatchToPotato = {
-  incrementCount,
-  decrementCount,
+  selectCategory,
+  // incrementCount,
+  // decrementCount,
 };
 
 export default connect(mapStateToPotato, mapDispatchToPotato)(Categories);

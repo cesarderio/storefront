@@ -1,4 +1,6 @@
-
+const initialState = {
+  cart: ''
+};
 
 function cartReducer(state = initialState, action) {
   const { type, payload } = action;
