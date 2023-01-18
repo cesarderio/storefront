@@ -1,20 +1,19 @@
-import { legacy_createStore as createStore, combineReducers } from "redux";
+import { legacy_createStore as createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
-// import cartReducer from "./cart";
 import categoriesReducer from "./categories";
-// import activeCategoryReducer from "./active-category";
-// import productsReducer from "./products";
-// import { selectCategory, reset } from "./active-category";
+import productsReducer from "./products";
+import cartReducer from "./cart";
+// import logger from "./middleware/logger";
+import thunk from "./middleware/thunk";
+// import todoReducer from "./todo";
 
 let reducers = combineReducers({
-  // activeCategory: activeCategoryReducer,
-  // category: categoriesReducer,
-  products: categoriesReducer,
-  // products: productsReducer,
-  // cart: cartReducer,
+  category: categoriesReducer,
+  products: productsReducer,
+  cart: cartReducer,
 });
 
-const store = () => createStore(reducers, composeWithDevTools());
+const store = () => createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 
 export default store();
 // export default function store() {
