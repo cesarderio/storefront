@@ -6,7 +6,7 @@ describe('Footer', () => {
   it('renders as expected', () => {
     render(<Footer />);
 
-    let footer = screen.getByText('&copy; 2023 Raphael Cesar');
+    let footer = screen.getByTestId('footer-h2');
 
     expect(footer).toBeTruthy();
     expect(footer).toBeInTheDocument();

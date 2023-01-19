@@ -1,11 +1,10 @@
 const initialState = [];
 
-
 const cartReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "Add":
+    case "ADD":
       return [...state, payload];
     case 'REMOVE':
       return state.filter(product => product.name !== payload.name)

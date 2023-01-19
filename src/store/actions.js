@@ -1,5 +1,7 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+// import axios from "axios";
+// `https://api-js401.herokuapp.com/api/v1/categories`
+// `https://api-js401.herokuapp.com/api/v1/products`
 
 export const selectCategory = (category) => {
   return {
