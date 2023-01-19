@@ -1,34 +1,38 @@
-
 import { Button, Card } from "@mui/material";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/actions";
+import { getProducts } from "../../store/products";
 
 // Displays a list of products associated with the selected category.
 const Products = () => {
-  const dispatch = useDispatch()
-  const { products } = useSelector(state => state);
-  const { activeCategory } = useSelector(state => state.category)
+  const dispatch = useDispatch();
+  const { productsList } = useSelector((state) => state.products);
+  const { activeCategory } = useSelector((state) => state.category);
 
-  return(
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
+  return (
     <>
-    {activeCategory && products.map((product, index) => (
-      <Card key={`product-${index}`} variant='outlined' >
-        {product.name}
-        <Button variant="text" onClick={() => dispatch(addItem(product))}>ADD ITEM</Button>
-        </Card>
-    ))}
+      {activeCategory &&
+        productsList.map((product, index) => (
+          <Card
+            data-testid={`product-${index}`}
+            key={`product-${index}`}
+            variant="outlined">
+            {product.name}
+            <Button variant="text" onClick={() => dispatch(addItem(product))}>
+              ADD ITEM
+            </Button>
+          </Card>
+        ))}
     </>
-  )
+  );
 };
 
 export default Products;
-
-
-
-
-
-
-
 
 // const mapStateToProps = ({ products }) => {
 //   return {
@@ -36,4 +40,3 @@ export default Products;
 //     activeCategory: products.activeCategory,
 //   };
 // };
-

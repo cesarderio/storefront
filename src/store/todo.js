@@ -6,32 +6,37 @@ import axios from "axios";
 // 2. use them as keys for my reducer
 // 3.
 
-const ADD_TODOS = "ADD_TODOS";
-const SET_TODOS = "SET_TODOS";
+const ADD_ITEMS = "ADD_ITEMS";
+const SET_ITEMS = "SET_ITEMS";
 
 // create actions
-export const addTodos = createAction(ADD_TODOS);
-export const setTodos = createAction(SET_TODOS);
+export const addItems = createAction(ADD_ITEMS);
+export const setItems = createAction(SET_ITEMS);
 
+// `https://api-js401.herokuapp.com/api/v1/categories`
+// `https://api-js401.herokuapp.com/api/v1/products`
 // function to be used by THUNK
-export const getTodos = () => async (dispatch, getState) => {
-  let response = await axios.get("https://api-js401.herokuapp.com/api/v1/todo");
-  dispatch(setTodos(response.data.results));
+export const getProducts = () => async (dispatch, getState) => {
+  let response = await axios.get("https://api-js401.herokuapp.com/api/v1/products");
+  dispatch(setItems(response.data.results));
 };
 
+export const getCats = () => async (dispatch, getState) => {
+  let response = await axios.get("https://api-js401.herokuapp.com/api/v1/categories");
+  dispatch(setItems(response.data.results));
+}
+
 const todoReducer = createReducer(
-// first object: initial state
   {
     list: [],
   },
-  // second object: create individual reducers
   {
-    [ADD_TODOS]: (state, action) => {
+    [ADD_ITEMS]: (state, action) => {
       return {
         list: [...state.list, action.payload],
       };
     },
-    [SET_TODOS]: (state, action) => {
+    [SET_ITEMS]: (state, action) => {
       return {
         list: action.payload,
       };

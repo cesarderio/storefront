@@ -11,8 +11,8 @@ const App = () => {
       <Header />
       <Categories />
       <Products />
-      <Footer />
       <SimpleCart />
+      <Footer />
     </>
   );
 };

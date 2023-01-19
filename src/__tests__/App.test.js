@@ -25,5 +25,17 @@ describe("App integration", () => {
     let radio = screen.getByTestId("product-1");
     expect(tv).toHaveTextContent("TV");
     expect(radio).toHaveTextContent("Radio");
+
+    fireEvent.click(food);
+    let apples = screen.getByTestId("product-0");
+    let eggs = screen.getByTestId("product-1");
+    expect(apples).toHaveTextContent("Apples");
+    expect(eggs).toHaveTextContent("Eggs");
+
+    fireEvent.click(clothing);
+    let shirt = screen.getByTestId("product-0");
+    let socks = screen.getByTestId("product-1");
+    expect(shirt).toHaveTextContent("Shirt");
+    expect(socks).toHaveTextContent("Socks");
   });
 });
