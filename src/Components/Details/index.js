@@ -9,38 +9,30 @@ import {
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, adjustInventory } from "../../store/actions";
-import { getProducts, getDetails } from "../../store/actions";
+import { getDetails } from "../../store/actions";
 
-// Displays a list of products associated with the selected category.
-const Products = () => {
+const Details = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state);
-  const { activeCategory } = useSelector((state) => state.category);
+  const { product } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getDetails());
   }, []);
-
-  const renderList = products.filter((product) => product.category === activeCategory);
 
   const addHandler = (product) => {
     dispatch(addItem(product));
     dispatch(adjustInventory(product));
   };
-  const detailsHandler = (product) => {
-    dispatch(getDetails(product));
-  }
 
   // <img alt={product.name} src={`https://source.unsplash.com/random?${product.name}`} />
   return (
     <>
-      {activeCategory &&
-        renderList.map((product, index) => (
           <Card 
             sx={{ maxWidth: 345 }}
             data-testid={`product-${index}`}
             key={`product-${index}`}
             variant="outlined">
+              <Typography>{product.name}</Typography>
             <CardMedia
               component="img"
               alt={product.name}
@@ -48,21 +40,14 @@ const Products = () => {
               image={`https://source.unsplash.com/random?${product.name}`}
             />
             <CardContent>
+              <Typography>`In Stock: ${product.inStock}`</Typography>
               <Typography>{product.name}</Typography>
             </CardContent>
             <CardActions>
               <Button variant="text" onClick={() => addHandler(product)}>
-                ADD TO CART
+                BUY
               </Button>
-              <Button
-                variant="text"
-                onClick={() => detailsHandler(product)}
-              >
-                VIEW DETAILS
-              </Button>
-              {/* <Button variant="text" onClick={(handler) => dispatch(addItem(product))}>
-              ADD ITEM
-            </Button> */}
+
             </CardActions>
           </Card>
         ))}
@@ -70,4 +55,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Details;

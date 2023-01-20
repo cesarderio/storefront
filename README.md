@@ -31,3 +31,12 @@ Continue to use Material UI Components for layout and styling.
 Load the category and product list from a remote API on page load.
 Update the product quantity in stock when adding items to (or removing from) the cart.
 Continue to use multiple reducers.
+
+## Phase 4 Requirements
+
+In phase 4, we will be completing work on our Virtual Store by adding a two full page views to the application: Product Details and Checkout.
+
+The user stories from Phases 1, 2 and 3 remain unchanged. For this phase, we are now adding the following new user stories to meet the new requirements.
+
+As a user, I want to see a full detail view of a product so that I can make a more informed choice about purchasing it.
+As a user, I want to view my full cart and initiate the checkout process so that I can purchase my items and have them delivered.

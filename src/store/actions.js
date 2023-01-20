@@ -31,7 +31,7 @@ export const removeItem = (product) => {
 
 export const setProducts = (products) => {
   return {
-    type: "SET-PRODUCTS",
+    type: "SET_PRODUCTS",
     payload: products,
   };
 };
@@ -43,7 +43,7 @@ export const getProducts = () => async (dispatch, getState) => {
 
 export const setCategories = (products) => {
   return {
-    type: "SET-CATEGORIES",
+    type: "SET_CATEGORIES",
     payload: products,
   };
 };
@@ -55,7 +55,7 @@ export const getCategories = () => async (dispatch, getState) => {
 
 export const updateProduct = (product) => {
   return {
-    type: "UPDATE-PRODUCT",
+    type: "UPDATE_PRODUCT",
     payload: product,
   };
 };
@@ -69,6 +69,24 @@ export const adjustInventory = (product) => async (dispatch, getState) => {
   dispatch(updateProduct(response.data));
 };
 
+export const setDetails = (product) => {
+  return {
+    type: "SET_DETAILS",
+    payload: product,
+  };
+};
+
+export const getDetails = (product) => async (dispatch, getState) => {
+  let response = await axios.get(
+    `https://api-js401.herokuapp.com/api/v1/products/${product._id}`,
+    product
+  );
+  dispatch(setDetails(response.data));
+};
+
+{
+  /* <img alt={product.name} src={`https://source.unsplash.com/random?${product.name}`} /> */
+}
 // export const getProducts = createAsyncThunk(
 //   'products/getProducts',
 //   async() => {

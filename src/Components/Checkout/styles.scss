@@ -1,0 +1,20 @@
+.fillout-form {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.contact-info {
+  margin-left: 5%;
+  width: 25%;
+}
+
+.creditCard-info {
+  width: 25%;
+}
+> checkout-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
