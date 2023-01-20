@@ -19,9 +19,9 @@ const productsReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "SET-PRODUCTS":
+    case "SET_PRODUCTS":
       return payload;
-    case "UPDATE-PRODUCT":
+    case "UPDATE_PRODUCT":
       return state.map(product => product.name !== payload.name ? product : payload);
     default:
       return state;

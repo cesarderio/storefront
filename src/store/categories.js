@@ -1,8 +1,29 @@
+// import { createSlice } from "@reduxjs/toolkit";
 
 let initialState = {
   categories: [],
   activeCategory: "",
 };
+
+// const categorySlice = createSlice({
+//   name: "categories",
+//   initialState,
+//   reducers: {
+//     SELECT_CATEGORY: (state, action) => {
+//       return {
+//         ...state,
+//         activeCategory: action.payload,
+//       };
+//     },
+//     SET_CATEGORIES: (state, action) => {
+//       return {
+//         ...state,
+//         categories: action.payload,
+//       };
+//     },
+//     RESET: () => initialState,
+//   },
+// });
 
 const categoriesReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -13,7 +34,7 @@ const categoriesReducer = (state = initialState, action) => {
         ...state,
         activeCategory: payload,
       };
-    case "SET-CATEGORIES":
+    case "SET_CATEGORIES":
       return {
         ...state,
         categories: payload,
@@ -25,4 +46,6 @@ const categoriesReducer = (state = initialState, action) => {
   }
 };
 
+// export const {SELECT_CATEGORY, SET_CATEGORIES, RESET} = categorySlice.actions;
+// export default categorySlice.reducer;
 export default categoriesReducer;
