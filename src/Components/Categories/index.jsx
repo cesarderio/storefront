@@ -1,7 +1,7 @@
 import { ButtonGroup, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getCategories, selectCategory } from "../../store/actions";
+import { getCategories, selectCategory } from "../../store/categories";
 // import { getCategories, selectCategory } from "../../store/actions";
 // import { getCategories, selectCategory } from "../../store/candidates";
 

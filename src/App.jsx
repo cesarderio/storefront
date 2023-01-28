@@ -7,21 +7,20 @@ import Footer from "./Components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StoreFront from "./Components/StoreFront";
 import Checkout from "./Components/Checkout";
+import Details from "./Components/Details";
 
 const App = () => {
   return (
     <>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<StoreFront />} />
+          <Route path="/product/:id" element={<Details />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
-        {/* <Categories />
-        <Products />
-        <SimpleCart /> */}
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   );
 };

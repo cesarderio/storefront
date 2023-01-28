@@ -8,8 +8,10 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, adjustInventory } from "../../store/actions";
-import { getProducts, getDetails } from "../../store/actions";
+import { addItem } from "../../store/cart";
+import { getDetails } from "../../store/actions";
+import { adjustInventory, getProducts } from "../../store/products";
+import { Link } from "react-router-dom";
 
 // Displays a list of products associated with the selected category.
 const Products = () => {
@@ -19,6 +21,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderList = products.filter((product) => product.category === activeCategory);
@@ -29,22 +32,22 @@ const Products = () => {
   };
   const detailsHandler = (product) => {
     dispatch(getDetails(product));
-  }
+  };
 
   // <img alt={product.name} src={`https://source.unsplash.com/random?${product.name}`} />
   return (
     <>
       {activeCategory &&
         renderList.map((product, index) => (
-          <Card 
-            sx={{ maxWidth: 345 }}
+          <Card
+            sx={{ maxWidth: 600 }}
             data-testid={`product-${index}`}
             key={`product-${index}`}
             variant="outlined">
             <CardMedia
               component="img"
               alt={product.name}
-              height="140"
+              height="300"
               image={`https://source.unsplash.com/random?${product.name}`}
             />
             <CardContent>
@@ -54,10 +57,7 @@ const Products = () => {
               <Button variant="text" onClick={() => addHandler(product)}>
                 ADD TO CART
               </Button>
-              <Button
-                variant="text"
-                onClick={() => detailsHandler(product)}
-              >
+              <Button component={Link} to={`/product/${product._id}`} variant="text" onClick={() => detailsHandler(product)}>
                 VIEW DETAILS
               </Button>
               {/* <Button variant="text" onClick={(handler) => dispatch(addItem(product))}>

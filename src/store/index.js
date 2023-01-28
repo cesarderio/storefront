@@ -3,15 +3,16 @@ import categoriesReducer from "./categories";
 import productsReducer from "./products";
 import cartReducer from "./cart";
 
-const store = () =>
-  configureStore({
-    reducer: {
-      category: categoriesReducer,
-      products: productsReducer,
-      cart: cartReducer,
-    },
-  });
-export default store();
+const store = configureStore({
+  reducer: {
+    category: categoriesReducer,
+    products: productsReducer,
+    cart: cartReducer,
+  },
+});
+
+export default store;
+
 // import { legacy_createStore as createStore, combineReducers, applyMiddleware } from "redux";
 // import { composeWithDevTools } from "@redux-devtools/extension";
 // import categoriesReducer from "./categories";

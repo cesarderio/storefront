@@ -3,15 +3,20 @@ import { Button, Card } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import "./styles.scss";
 import Paper from "@mui/material/Paper";
+import { useSelector } from "react-redux";
+import SimpleCart from '../SimpleCart'
 
 const Checkout = () => {
+  // const { cart } = useSelector(state => state)
+
   return (
     <>
       <Paper className="paper-form" elevation={3}>
 
       <h1>Order Surmmary</h1>
       <Card>
-        <span>Items in cart</span>
+        <span>Items in cart </span>
+        <SimpleCart />
         <h1>Total:</h1>
       </Card>
       <div className="fillout-form">

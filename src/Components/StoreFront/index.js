@@ -6,17 +6,9 @@ import SimpleCart from "../SimpleCart";
 import Checkout from "../Checkout";
 
 const StoreFront = () => {
-  let { product } = useParams();
+  // let { product } = useParams();
   return (
     <>
-      {/* <Routes>
-      <Route path="StoreFront">
-<Link to={<Categories />}>Categories</Link>
-<Link to={<Products />}/>
-<Link to={<Details/>}/>
-<Link to={<Checkout />}/>
-      </Route>
-    </Routes> */}
       <Categories />
       <Products />
       <SimpleCart />
